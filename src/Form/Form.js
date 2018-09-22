@@ -3,7 +3,7 @@ import "./Form.css";
 
 class Form extends Component {
   render() {
-    return <div>Form</div>;
+    return <div className="Form">Form</div>;
   }
 }
 
