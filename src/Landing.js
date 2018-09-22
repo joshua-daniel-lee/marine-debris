@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Landing.css";
 import Header from "./Header/Header";
 import Map from "./Map/Map";
-import Form from "./Form/Form";
 import Footer from "./Footer/Footer";
 
 class Landing extends Component {
@@ -11,7 +10,6 @@ class Landing extends Component {
       <div className="container">
         <Header />
         <Map />
-        <Form />
         <Footer />
       </div>
     );
