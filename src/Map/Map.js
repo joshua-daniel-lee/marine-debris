@@ -12,8 +12,10 @@ import {
 
 // EXAMPLE OF DATA MODEL FOR MARKERS:
 const markers = [
-  { markerOffset: -25, name: "Buenos Aires", coordinates: [-58.3816, -34.6037] }
-]
+  { markerOffset: -15, name: "Plastic", coordinates: [-58.3816, -12.6037] },
+  { markerOffset: -15, name: "Plastic", coordinates: [-43.3816, -45.6037] },
+  { markerOffset: -15, name: "Plastic", coordinates: [-28.3816, -32.6037] }
+];
 
 class Map extends Component {
   render() {
@@ -34,39 +36,39 @@ class Map extends Component {
                 }
               </Geographies>
               <Markers>
-              {markers.map((marker, i) => (
-                <Marker
-                  key={i}
-                  marker={marker}
-                  style={{
-                    default: { fill: "#FF5722" },
-                    hover: { fill: "#FFFFFF" },
-                    pressed: { fill: "#FF5722" },
-                  }}
+                {markers.map((marker, i) => (
+                  <Marker
+                    key={i}
+                    marker={marker}
+                    style={{
+                      default: { fill: "yellow" },
+                      hover: { fill: "gray" },
+                      pressed: { fill: "yellow" }
+                    }}
                   >
-                  <circle
-                    cx={0}
-                    cy={0}
-                    r={10}
-                    style={{
-                      stroke: "#FF5722",
-                      strokeWidth: 3,
-                      opacity: 0.9,
-                    }}
-                  />
-                  <text
-                    textAnchor="middle"
-                    y={marker.markerOffset}
-                    style={{
-                      fontFamily: "Roboto, sans-serif",
-                      fill: "#607D8B",
-                    }}
+                    <circle
+                      cx={0}
+                      cy={0}
+                      r={10}
+                      style={{
+                        stroke: "yellow",
+                        strokeWidth: 3,
+                        opacity: 0.6
+                      }}
+                    />
+                    <text
+                      textAnchor="middle"
+                      y={marker.markerOffset}
+                      style={{
+                        fontFamily: "Roboto, sans-serif",
+                        fill: "yellow"
+                      }}
                     >
-                    {marker.name}
-                  </text>
-                </Marker>
-              ))}
-            </Markers>
+                      {marker.name}
+                    </text>
+                  </Marker>
+                ))}
+              </Markers>
             </ZoomableGroup>
           </ComposableMap>
         </div>

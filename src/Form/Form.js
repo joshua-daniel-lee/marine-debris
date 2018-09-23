@@ -1,30 +1,34 @@
 import React, { Component } from "react";
 import "./Form.css";
 import Button from "@material-ui/core/Button";
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { geolocated } from 'react-geolocated';
+import { geolocated } from "react-geolocated";
 
 class Form extends React.Component {
   state = {
-    open: false
+    open: false,
+    coords: []
   };
 
   handleClickOpen = () => {
-    this.setState({ open: true });
+    this.setState({
+      open: true,
+      coords: this.state.coords
+    });
   };
 
   handleClose = () => {
     this.setState({ open: false });
+    console.log("this is the state", this.state);
   };
 
   render() {
-    console.log('get coordinates >>> ',this.props.coords)
     return (
       <div className="contactButton">
         <Button
@@ -40,10 +44,9 @@ class Form extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">
-          </DialogTitle>
+          <DialogTitle id="form-dialog-title" />
           <DialogContent>
-            <DialogContentText>Text</DialogContentText>
+            <DialogContentText>Report Marine Debris</DialogContentText>
             <TextField
               autoFocus
               margin="dense"
@@ -52,6 +55,9 @@ class Form extends React.Component {
               type="email"
               fullWidth
             />
+            <TextField margin="dense" id="lat" label="Latitude" fullWidth />
+            <TextField margin="dense" id="long" label="Longitude" fullWidth />
+
             <TextField margin="dense" id="message" label="Message" fullWidth />
           </DialogContent>
           <DialogActions>
@@ -70,7 +76,7 @@ class Form extends React.Component {
 
 export default geolocated({
   positionOptions: {
-    enableHighAccuracy: true,
+    enableHighAccuracy: true
   },
   userDecisionTimeout: null,
   watchPosition: true
