@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "./Form.css";
 import Button from "@material-ui/core/Button";
+import AddIcon from '@material-ui/icons/Add';
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { geolocated } from 'react-geolocated';
 
 class Form extends React.Component {
   state = {
@@ -22,6 +24,7 @@ class Form extends React.Component {
   };
 
   render() {
+    console.log('get coordinates >>> ',this.props.coords)
     return (
       <div className="contactButton">
         <Button
@@ -29,13 +32,16 @@ class Form extends React.Component {
           color="primary"
           aria-label="Add"
           onClick={this.handleClickOpen}
-        />
+        >
+          <AddIcon />
+        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Report Debris</DialogTitle>
+          <DialogTitle id="form-dialog-title">
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>Text</DialogContentText>
             <TextField
@@ -62,4 +68,10 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default geolocated({
+  positionOptions: {
+    enableHighAccuracy: true,
+  },
+  userDecisionTimeout: null,
+  watchPosition: true
+})(Form);
