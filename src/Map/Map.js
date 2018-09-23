@@ -5,15 +5,22 @@ import {
   ComposableMap,
   ZoomableGroup,
   Geographies,
-  Geography
+  Geography,
+  Markers,
+  Marker
 } from "react-simple-maps";
 
 class Map extends Component {
   render() {
     return (
       <div className="map">
-        <div>
-          <ComposableMap>
+        <div className="mapGrid">
+          <ComposableMap
+            projectionConfig={{
+              scale: 300,
+              rotation: [10, 0, 0]
+            }}
+          >
             <ZoomableGroup>
               <Geographies geography={worldMap}>
                 {(geographies, projection) =>
@@ -26,6 +33,7 @@ class Map extends Component {
                   ))
                 }
               </Geographies>
+              <Markers />
             </ZoomableGroup>
           </ComposableMap>
         </div>

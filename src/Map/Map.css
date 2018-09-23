@@ -1,6 +1,11 @@
 /* Map Styles */
 .map {
-  grid-column: 1 / 4;
-  grid-row: 2;
-  height: 75vh;
+  grid-column: 1 / 6;
+  grid-row: 2 / 6;
+  height: 100vh;
+}
+
+.rsm-svg {
+  width: 100vw;
+  height: 100vh;
 }

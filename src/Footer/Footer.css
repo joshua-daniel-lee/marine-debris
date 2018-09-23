@@ -1,7 +1,0 @@
-/* Footer Styles */
-.footer {
-  grid-column: 1 / 4;
-  grid-row: 4;
-  height: 10vh;
-  background-color: #193549;
-}
